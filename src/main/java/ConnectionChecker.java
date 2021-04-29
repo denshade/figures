@@ -39,6 +39,27 @@ public class ConnectionChecker
             }
         }
     }
+    public static String printMap(int[][] map, int maxsize) {
+        StringBuilder mapStr = new StringBuilder("============================= [" + count_nr_pixels_lit(map, maxsize) + "]\n");
+        for (int y = 0; y < maxsize; y++) {
+            for (int x = 0; x < maxsize; x++) {
+                mapStr.append(map[y][x]).append(" ");
+            }
+            mapStr.append("\n");
+        }
+        mapStr.append("=============================");
+        return mapStr.toString();
+    }
 
+    public static int count_nr_pixels_lit(int[][] map_without_pixel, int maxsize) {
+        int counter = 0;
+        for (int y =0; y < maxsize; y++)
+            for (int x =0; x < maxsize; x++) {
+                if (map_without_pixel[y][x] == 1) {
+                    counter++;
+                }
+            }
+        return counter;
+    }
 
 }
