@@ -30,15 +30,28 @@ public class FiguresPointLines {
             //lineto p1 -> p2.
 
             if (connectionChecker.check_is_connected(map)) {
-                pickOff(map,0);
                 System.out.println(Arrays.deepToString(map));
 //                System.out.println(map.);
 
             }
 
         }
-
     }
+
+    public static void lineTo(int startX, int startY, int stopX, int stopY, int[][] map)
+    {
+        if (startX > stopX) {
+            lineTo(stopX, stopY, startX, startY, map);
+        }
+        double dx = stopX - startX;
+        double dy = stopY - startY;
+        for (double x = startX; x <= stopX; x++){
+            double y = startY + dy*(x - startX) / dx;
+            map[(int)y][(int)x] = 1;
+        }
+    }
+
+
 
     private static int[][] bestSolution;
     private static int best_nr_of_pixels_lit = MAX_SIZE*MAX_SIZE;
